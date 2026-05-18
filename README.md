@@ -64,7 +64,3 @@ steps. Generally:
 5. Connect Power BI to your Synapse dedicated SQL endpoint
 
 ---
-
-## Architecture Pattern
-
-All projects in this repository follow the same core architecture:
