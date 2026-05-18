@@ -46,21 +46,23 @@ How is the Olist marketplace performing across order revenue, seller reliability
 
 ## Architecture
 
+```
 Kaggle CSVs (9 files)
-↓
-Azure Blob Storage — ADLS Gen2
+        ↓
+Azure Blob Storage (ADLS Gen2)
 raw-retail-data container
-↓
-Azure Data Factory — PL_01_IngestAllFiles
-9 parameterised Copy Activities running in parallel
+        ↓
+Azure Data Factory
+PL_01_IngestAllFiles — 9 parameterised Copy Activities
 Storage Event Trigger — fires automatically on new file upload
-↓
+        ↓
 Azure Synapse Analytics — RetailDW Dedicated SQL Pool
-raw schema      → 9 staging tables (VARCHAR, ROUND_ROBIN, HEAP)
-analytics schema → star schema (typed, HASH/REPLICATE, Columnstore)
-↓
+├── raw schema      → 9 staging tables (VARCHAR, ROUND_ROBIN, HEAP)
+└── analytics schema → star schema (HASH/REPLICATE, Columnstore)
+        ↓
 Power BI Desktop
 3-page interactive dashboard connected directly to Synapse
+```
 
 ## Data Quality Issues Resolved
 
@@ -114,3 +116,13 @@ NULL value handling · Cross-region Azure deployment ·
 Real data quality issue resolution
 
 ---
+## DashBoard
+
+<img width="1257" height="697" alt="dashboard_page1" src="https://github.com/user-attachments/assets/dacfa6a1-495e-4737-b4b3-0a93b1241451" />
+
+---
+<img width="1258" height="695" alt="dashboard_page2" src="https://github.com/user-attachments/assets/59757668-0b06-462f-b6ce-15f64411b5b6" />
+
+---
+<img width="1258" height="690" alt="dashboard_page3" src="https://github.com/user-attachments/assets/b0cb1db7-8017-4499-96b1-b86607eecd7a" />
+
